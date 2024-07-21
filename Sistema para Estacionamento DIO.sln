@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sistema para Estacionamento DIO", "Sistema para Estacionamento DIO\Sistema para Estacionamento DIO.csproj", "{5968125F-7765-40D1-9B4A-421A2528C537}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testes", "Testes\Testes.csproj", "{3D65DFFA-F5BC-4F54-AA8A-0BF1DF56517C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5968125F-7765-40D1-9B4A-421A2528C537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5968125F-7765-40D1-9B4A-421A2528C537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5968125F-7765-40D1-9B4A-421A2528C537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5968125F-7765-40D1-9B4A-421A2528C537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D65DFFA-F5BC-4F54-AA8A-0BF1DF56517C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D65DFFA-F5BC-4F54-AA8A-0BF1DF56517C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D65DFFA-F5BC-4F54-AA8A-0BF1DF56517C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D65DFFA-F5BC-4F54-AA8A-0BF1DF56517C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D776958C-EE09-4EFB-9014-A9800EEA9ABD}
+	EndGlobalSection
+EndGlobal
