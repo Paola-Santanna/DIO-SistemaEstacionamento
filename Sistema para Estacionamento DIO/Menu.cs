@@ -12,15 +12,15 @@ namespace Sistema_para_Estacionamento_DIO
         public Menu() { }
         public int MenuOptions()
         {
-            Console.WriteLine(">>>Menu<<<".ToUpper());
-            Console.WriteLine("1 -> Cadastrar um veículo");
-            Console.WriteLine("2 -> Remover veículo");
-            Console.WriteLine("3 -> Listar veículos");
-            Console.WriteLine("4 -> Encerrar");
-            Console.Write("Opcao escolhida: ");
-            int opcaoEscolhida = int.Parse(Console.ReadLine());
+            Console.WriteLine(">>>Options<<<".ToUpper());
+            Console.WriteLine("1 -> Register a Vehicle");
+            Console.WriteLine("2 -> Delete a Vehicle");
+            Console.WriteLine("3 -> List Vehicles");
+            Console.WriteLine("4 -> Close");
+            Console.Write("Option choosed: ");
+            int optionChoosed = int.Parse(Console.ReadLine());
             ClearPrompt();
-            return opcaoEscolhida;
+            return optionChoosed;
         }
 
         public void OptionChoosed(int option)
@@ -40,7 +40,7 @@ namespace Sistema_para_Estacionamento_DIO
                         vehicle.ID = cont;
                         temporaryPrice = vehicle.RegisterHourPrice();
 
-                        Console.WriteLine(">>>Cadastrar um veículo<<<".ToUpper(), "\n");
+                        Console.WriteLine(">>>Register a Vehicle<<<".ToUpper(), "\n");
                         vehicle.RegisterVehicle();
                         vList.Add(vehicle);
                         vehicle.FinalPrice(temporaryPrice);
@@ -52,8 +52,8 @@ namespace Sistema_para_Estacionamento_DIO
                     case 2:
                         if (!IsEmpty(vList))
                         {
-                            Console.WriteLine(">>>Remover veículo<<<".ToUpper(), "\n");
-                            Console.Write("Insira o ID do veículo: ");
+                            Console.WriteLine(">>>Delete a Vehicle<<<".ToUpper(), "\n");
+                            Console.Write("Enter vehicle ID: ");
                             int id = int.Parse(Console.ReadLine());
 
                             for (int i = 0; i<vList.Count; i++)
@@ -63,19 +63,19 @@ namespace Sistema_para_Estacionamento_DIO
                                     Console.WriteLine();
                                     Console.WriteLine(vList[i].ToString());
                                     vList.Remove(vList[i]);
-                                    Console.WriteLine("\nVeículo removido!");
+                                    Console.WriteLine("\nVehicle removed!");
                                 }
                             }
                         }
                         else
-                            Console.WriteLine("Nao tem carros no estacionamento!");
+                            Console.WriteLine("There are no cars in the parking lot!");
 
                         ClearPrompt();
                         option = MenuOptions();
                         break;
 
                     case 3:
-                        Console.WriteLine(">>>Listar veículos<<<".ToUpper(), "\n");
+                        Console.WriteLine(">>>List vehicles<<<".ToUpper(), "\n");
 
                         foreach (var v in vList)
                         {
@@ -89,13 +89,13 @@ namespace Sistema_para_Estacionamento_DIO
 
                     case 4:
                         Console.Clear();
-                        Console.WriteLine("Encerrar".ToUpper());
+                        Console.WriteLine("Close".ToUpper());
 
                         ClearPrompt();
                         break;
 
                     default:
-                        Console.WriteLine("\nOpcao Invalida!\n".ToUpper());
+                        Console.WriteLine("\nInvalid option!\n".ToUpper());
 
                         ClearPrompt();
                         option = MenuOptions();
@@ -106,7 +106,7 @@ namespace Sistema_para_Estacionamento_DIO
 
         private void ClearPrompt()
         {
-            Console.WriteLine("\n\nPressione ENTER para prosseguir...");
+            Console.WriteLine("\n\nPress ENTER to continue...");
             Console.ReadKey();
             Console.Clear();
         }
