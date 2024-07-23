@@ -39,9 +39,9 @@ namespace Sistema_para_Estacionamento_DIO
         public float RegisterHourPrice()
         {
             Console.Clear();
-            Console.WriteLine("\n>>>Bem vindo ao estacionamento!<<<".ToUpper());
+            Console.WriteLine("\n>>>Welcome to the parking lot!<<<".ToUpper());
             
-            Console.WriteLine("Digite o preço por hora (Use vírgula para decimais)");
+            Console.WriteLine("Enter the price per hour (Use comma for decimals)");
             float pricePerHour = float.Parse(Console.ReadLine());
 
             return pricePerHour;
@@ -49,41 +49,41 @@ namespace Sistema_para_Estacionamento_DIO
 
         public void RegisterVehicle()
         {
-            Console.WriteLine("\nInsira as seguintes informações:");
+            Console.WriteLine("\nEnter the following information:");
 
             Console.WriteLine($"\nID: {this.ID}");
-            Console.Write("Tipo do veículo: ");
+            Console.Write("Vehicle Type: ");
             this.VehicleType = Console.ReadLine();
 
-            Console.Write("Modelo do veículo: ");
+            Console.Write("Vehicle Model: ");
             this.VehicleModel = Console.ReadLine();
 
-            Console.Write("Ano do veículo: ");
+            Console.Write("Vehicle year: ");
             this.Year = int.Parse(Console.ReadLine());
 
-            Console.Write("Cor do veículo: ");
+            Console.Write("Vehicle color: ");
             this.Color = Console.ReadLine();
 
-            Console.Write("Proprietário do veículo: ");
+            Console.Write("Vehicle owner: ");
             this.Owner = Console.ReadLine();
 
-            Console.Write("Placa do veículo: ");
+            Console.Write("Vehicle plate: ");
             this.LicensePlate = Console.ReadLine();
         }
 
         public void FinalPrice(float p)
         {
-            Console.Write("\nTotal de HORAS que o veículos ficou estacionado: ");
+            Console.Write("\nTotal HOURS that the vehicle was parked: ");
             this.TotalHorsParked = int.Parse(Console.ReadLine());
 
             this.FinalPriceToPay = p*this.TotalHorsParked;
 
-            Console.WriteLine($"\nPreço Por Hora: {p} \nPreço Final: {this.FinalPriceToPay}");
+            Console.WriteLine($"\nPrice Per Hour: {p} \nFinal price: {this.FinalPriceToPay}");
         }
 
         public override string? ToString()
         {
-            return $"ID do Veículo: {this.ID} \nTipo de Veículo: {this.VehicleType} \nModelo do Veículo: {this.VehicleModel} \nAno: {this.Year} \nCor: {this.Color} \nProprietário: {this.Owner} \nPlaca: {this.LicensePlate} \nTotal de Horas Estacionado: {this.TotalHorsParked} \nPreço Final a Pagar: {this.FinalPriceToPay}";
+            return $"Vehicle ID: {this.ID} \nVehicle Type: {this.VehicleType} \nVehicle Model: {this.VehicleModel} \nYear: {this.Year} \nColor: {this.Color} \nOwner: {this.Owner} \nVehicle plate:: {this.LicensePlate} \nTotal Hours Parked: {this.TotalHorsParked} \nFinal price: {this.FinalPriceToPay}";
         }
     }
 }
