@@ -3,78 +3,80 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ParkSystemDIO.Domain.Entities;
 
-namespace Sistema_para_Estacionamento_DIO
+namespace ParkSystemDIO.Domain;
+public class Menu
 {
-    internal class Menu
+
+    public Menu() { }
+    public int MenuOptions()
     {
+        Console.WriteLine(">>>Options<<<".ToUpper());
+        Console.WriteLine("1 -> Register a Vehicle");
+        Console.WriteLine("2 -> Delete a Vehicle");
+        Console.WriteLine("3 -> List Vehicles");
+        Console.WriteLine("4 -> Close");
+        Console.Write("Option choosed: ");
+        int optionChoosed = int.Parse(Console.ReadLine());
+        ClearPrompt();
+        return optionChoosed;
+    }
 
-        public Menu() { }
-        public int MenuOptions()
+    public void OptionChoosed(int option)
+    {
+        Vehicle vehicle;
+        List<Vehicle> vList = new List<Vehicle>();
+        float temporaryPrice;
+        int cont = 1;
+
+        do
         {
-            Console.WriteLine(">>>Options<<<".ToUpper());
-            Console.WriteLine("1 -> Register a Vehicle");
-            Console.WriteLine("2 -> Delete a Vehicle");
-            Console.WriteLine("3 -> List Vehicles");
-            Console.WriteLine("4 -> Close");
-            Console.Write("Option choosed: ");
-            int optionChoosed = int.Parse(Console.ReadLine());
-            ClearPrompt();
-            return optionChoosed;
-        }
-
-        public void OptionChoosed(int option)
-        {
-            Vehicle vehicle;
-            List<Vehicle> vList = new List<Vehicle>();
-            float temporaryPrice;
-            int cont =1;
-
-            do
+            switch (option)
             {
-                switch (option)
-                {
-                    case 1:
-                        Console.Clear();
-                        vehicle = new();
-                        vehicle.ID = cont;
-                        temporaryPrice = vehicle.RegisterHourPrice();
+                case 1:
+                    Console.Clear();
+                    vehicle = new();
+                    vehicle.ID = cont;
+                    temporaryPrice = vehicle.RegisterHourPrice();
 
-                        Console.WriteLine(">>>Register a Vehicle<<<".ToUpper(), "\n");
-                        vehicle.RegisterVehicle();
-                        vList.Add(vehicle);
-                        vehicle.FinalPrice(temporaryPrice);
-                        cont++;
-                        ClearPrompt();
-                        option = MenuOptions();
-                        break;
+                    Console.WriteLine(">>>Register a Vehicle<<<".ToUpper(), "\n");
+                    vehicle.RegisterVehicle();
+                    vList.Add(vehicle);
+                    vehicle.FinalPrice(temporaryPrice);
+                    cont++;
+                    ClearPrompt();
+                    option = MenuOptions();
+                    break;
 
-                    case 2:
-                        if (!IsEmpty(vList))
+                case 2:
+                    if (!IsEmpty(vList))
+                    {
+                        Console.WriteLine(">>>Delete a Vehicle<<<".ToUpper(), "\n");
+                        Console.Write("Enter vehicle ID: ");
+                        int id = int.Parse(Console.ReadLine());
+
+                        for (int i = 0; i < vList.Count; i++)
                         {
-                            Console.WriteLine(">>>Delete a Vehicle<<<".ToUpper(), "\n");
-                            Console.Write("Enter vehicle ID: ");
-                            int id = int.Parse(Console.ReadLine());
-
-                            for (int i = 0; i<vList.Count; i++)
+                            if (vList[i].ID == id)
                             {
-                                if (vList[i].ID == id)
-                                {
-                                    Console.WriteLine();
-                                    Console.WriteLine(vList[i].ToString());
-                                    vList.Remove(vList[i]);
-                                    Console.WriteLine("\nVehicle removed!");
-                                }
+                                Console.WriteLine();
+                                Console.WriteLine(vList[i].ToString());
+                                vList.Remove(vList[i]);
+                                Console.WriteLine("\nVehicle removed!");
                             }
                         }
-                        else
-                            Console.WriteLine("There are no cars in the parking lot!");
+                    }
+                    else
+                        Console.WriteLine("There are no cars in the parking lot!");
 
-                        ClearPrompt();
-                        option = MenuOptions();
-                        break;
+                    ClearPrompt();
+                    option = MenuOptions();
+                    break;
 
-                    case 3:
+                case 3:
+                    if (!IsEmpty(vList))
+                    {
                         Console.WriteLine(">>>List vehicles<<<".ToUpper(), "\n");
 
                         foreach (var v in vList)
@@ -86,38 +88,43 @@ namespace Sistema_para_Estacionamento_DIO
                         ClearPrompt();
                         option = MenuOptions();
                         break;
-
-                    case 4:
-                        Console.Clear();
-                        Console.WriteLine("Close".ToUpper());
-
-                        ClearPrompt();
+                    }
+                    else
+                    {
+                        Console.WriteLine("There are no cars in the parking lot!");
                         break;
+                    }
 
-                    default:
-                        Console.WriteLine("\nInvalid option!\n".ToUpper());
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine("Close".ToUpper());
 
-                        ClearPrompt();
-                        option = MenuOptions();
-                        break;
-                }
-            } while (option != 4);
-        }
+                    ClearPrompt();
+                    break;
 
-        private void ClearPrompt()
-        {
-            Console.WriteLine("\n\nPress ENTER to continue...");
-            Console.ReadKey();
-            Console.Clear();
-        }
+                default:
+                    Console.WriteLine("\nInvalid option!\n".ToUpper());
 
-        private bool IsEmpty(List<Vehicle> l)
-        {
-            bool isEmpty = true;
+                    ClearPrompt();
+                    option = MenuOptions();
+                    break;
+            }
+        } while (option != 4);
+    }
 
-            if (l.Count != null && l.Count != 0) { isEmpty = false; }
+    private void ClearPrompt()
+    {
+        Console.WriteLine("\n\nPress ENTER to continue...");
+        Console.ReadKey();
+        Console.Clear();
+    }
 
-            return isEmpty;
-        }
+    private bool IsEmpty(List<Vehicle> l)
+    {
+        bool isEmpty = true;
+
+        if (l.Count != null && l.Count != 0) { isEmpty = false; }
+
+        return isEmpty;
     }
 }

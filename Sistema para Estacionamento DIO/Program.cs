@@ -1,18 +1,14 @@
-﻿// Sistema de estacionamento
-
-namespace Sistema_para_Estacionamento_DIO
+﻿namespace ParkSystemDIO.Domain;
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Menu menu = new Menu();
-            int option;
+        Menu menu = new Menu();
+        int option;
 
-            Console.WriteLine(">>>Bem Vindo ao Estacionamento!<<<\n".ToUpper());
+        Console.WriteLine(">>>Bem Vindo ao Estacionamento!<<<\n".ToUpper());
 
-            option = menu.MenuOptions();
-            menu.OptionChoosed(option);
-        }
+        option = menu.MenuOptions();
+        menu.OptionChoosed(option);
     }
 }
